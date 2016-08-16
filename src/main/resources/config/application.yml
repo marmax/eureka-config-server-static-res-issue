@@ -1,0 +1,33 @@
+server:
+    port: ${PORT:8761}
+
+eureka:
+    instance:
+        hostname: localhost
+    server:
+        waitTimeInMsWhenSyncEmpty: 0
+    client:
+        registerWithEureka: false
+        fetchRegistry: false
+#        serviceUrl:
+#            defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+logging:
+    level:
+        org.springframework: INFO
+        org.springframework.beans.factory.annotation: WARN
+
+spring:
+    profiles.active: native
+    jackson:
+        serialization:
+            indent_output: true # Pretty-print JSON responses
+    mvc:
+        favicon:
+            enabled: false
+    cloud:
+        config:
+            enabled: false # disable config client (as this is the config server ;)
+            server:
+                native:
+                    searchLocations: /tmp
